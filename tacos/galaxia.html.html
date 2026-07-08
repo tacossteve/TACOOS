@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nuestro Universo ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    overflow:hidden;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:Arial, sans-serif;
+    background:radial-gradient(circle at center,#5b2c83,#1a103d,#050510);
+}
+
+canvas{
+    position:fixed;
+    top:0;
+    left:0;
+}
+
+.carta{
+    position:relative;
+    z-index:2;
+    width:85%;
+    max-width:700px;
+    background:rgba(255,255,255,.12);
+    backdrop-filter:blur(12px);
+    padding:35px;
+    border-radius:25px;
+    color:white;
+    text-align:center;
+    box-shadow:0 0 30px rgba(255,255,255,.2);
+}
+
+h1{
+    color:#ffd5ea;
+    margin-bottom:20px;
+    font-size:38px;
+}
+
+p{
+    line-height:1.8;
+    font-size:20px;
+}
+
+button{
+    margin-top:25px;
+    padding:12px 30px;
+    border:none;
+    border-radius:30px;
+    background:#ff4f8b;
+    color:white;
+    cursor:pointer;
+    font-size:18px;
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+
+.heart{
+    position:fixed;
+    top:-20px;
+    color:#ff7eb3;
+    animation:fall linear forwards;
+    pointer-events:none;
+}
+
+@keyframes fall{
+    to{
+        transform:translateY(110vh);
+        opacity:0;
+    }
+}
+</style>
+</head>
+<body>
+
+<canvas id="galaxia"></canvas>
+
+<div class="carta">
+
+<h1>❤️ Nuestro Universo ❤️</h1>
+
+<p>
+
+ESCRIBE AQUÍ TU CARTA.
+
+Puedes poner todo el mensaje que quieras dedicarle.
+
+</p>
+
+<button onclick="location.href='index.html'">
+Volver ❤️
+</button>
+
+</div>
+
+<script>
+
+const canvas=document.getElementById("galaxia");
+const ctx=canvas.getContext("2d");
+
+function resize(){
+canvas.width=innerWidth;
+canvas.height=innerHeight;
+}
+
+resize();
+
+addEventListener("resize",resize);
+
+const stars=[];
+
+for(let i=0;i<250;i++){
+
+stars.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+r:Math.random()*2,
+a:Math.random()
+});
+
+}
+
+function draw(){
+
+ctx.fillStyle="#050510";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+for(let s of stars){
+
+ctx.beginPath();
+ctx.fillStyle="rgba(255,255,255,"+s.a+")";
+ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+ctx.fill();
+
+s.a+= (Math.random()-.5)*0.05;
+
+if(s.a<0.2)s.a=0.2;
+if(s.a>1)s.a=1;
+
+}
+
+requestAnimationFrame(draw);
+
+}
+
+draw();
+
+function heart(){
+
+const h=document.createElement("div");
+
+h.className="heart";
+
+h.innerHTML="❤️";
+
+h.style.left=Math.random()*100+"vw";
+
+h.style.fontSize=(20+Math.random()*25)+"px";
+
+h.style.animationDuration=(4+Math.random()*3)+"s";
+
+document.body.appendChild(h);
+
+setTimeout(()=>h.remove(),7000);
+
+}
+
+setInterval(heart,250);
+
+</script>
+
+</body>
+</html>

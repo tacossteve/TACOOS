@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mi Carta ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    overflow:hidden;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ff5f8f,#ff9ec4);
+    font-family:Arial,sans-serif;
+}
+
+.carta{
+    width:85%;
+    max-width:700px;
+    background:white;
+    padding:35px;
+    border-radius:20px;
+    box-shadow:0 0 20px rgba(0,0,0,.3);
+    z-index:10;
+}
+
+h1{
+    text-align:center;
+    color:#ff3366;
+    margin-bottom:20px;
+}
+
+p{
+    font-size:20px;
+    color:#444;
+    line-height:1.8;
+    text-align:justify;
+}
+
+.corazon{
+    position:absolute;
+    top:-50px;
+    color:red;
+    animation:caer linear forwards;
+}
+
+@keyframes caer{
+    to{
+        transform:translateY(110vh);
+        opacity:0;
+    }
+}
+</style>
+</head>
+
+<canvas id="galaxia"></canvas>
+
+<div class="carta">
+
+<body>
+
+<div class="carta">
+    <h1>Para Ti, Mi Amor ❤️</h1>
+
+    <p>
+        Escribe aquí todo el mensaje que quieras dedicarle. Puedes hacer una carta larga, contarle lo mucho que la amas, recordar momentos especiales y decirle todo lo que sientes. ❤️
+    </p>
+     <button onclick="window.location.href='galaxia.html'">
+    Abre mi carta ❤️
+</button>
+</div>
+
+<script>
+function crearCorazon(){
+    const c=document.createElement("div");
+    c.classList.add("corazon");
+    c.innerHTML="❤️";
+    c.style.left=Math.random()*100+"vw";
+    c.style.fontSize=(20+Math.random()*25)+"px";
+    c.style.animationDuration=(3+Math.random()*3)+"s";
+    document.body.appendChild(c);
+
+    setTimeout(()=>c.remove(),6000);
+}
+
+setInterval(crearCorazon,250);
+</script>
+
+</body>
+</html>

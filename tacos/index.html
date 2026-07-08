@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PARA MiBIDA ❤️</title>
+
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    overflow:hidde;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ff5f8f,#ff9ec4);
+    font-family:Arial,sans-serif;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    border-radius:20px;
+    text-align:center;
+    width:350px;
+    z-index:10;
+    box-shadow:0 0 20px rgba(0,0,0,.3);
+}
+
+img{
+    width:220px;
+    height:220px;
+    object-fit:cover;
+    border-radius:50%;
+    border:6px solid #ff4d6d;
+}
+
+h1{
+    color:#ff3366;
+    margin:15px 0;
+}
+
+p{
+    color:#555;
+    font-size:18px;
+}
+
+button{
+    margin-top:20px;
+    padding:12px 25px;
+    border:none;
+    border-radius:30px;
+    background:#ff3366;
+    color:white;
+    cursor:pointer;
+    font-size:18px;
+}
+
+button:hover{
+    background:#ff1744;
+}
+
+.corazon{
+    position:absolute;
+    top:-50px;
+    color:red;
+    animation:caer linear forwards;
+}
+
+@keyframes caer{
+    to{
+        transform:translateY(110vh);
+        opacity:0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <img src="nosotros.png.jpeg" alt="Nosotros">
+
+    <h1>PARA  MIBIDA ❤️</h1>
+
+    <p>
+        Gracias por llegar a mi vida. Eres la mejor parte de mis días y la persona con la que quiero seguir creando recuerdos.
+    </p>
+
+   <button onclick="window.location.href='galaxia.html'">
+    Abre mi carta ❤️
+    <button onclick="window.location.href='inde.html'"> Galaxia
+
+</div>
+
+<script>
+function crearCorazon(){
+    const c=document.createElement("div");
+    c.classList.add("corazon");
+    c.innerHTML="❤️";
+    c.style.left=Math.random()*100+"vw";
+    c.style.fontSize=(20+Math.random()*25)+"px";
+    c.style.animationDuration=(3+Math.random()*3)+"s";
+    document.body.appendChild(c);
+
+    setTimeout(()=>c.remove(),6000);
+}
+
+setInterval(crearCorazon,250);
+</script>
+
+</body>
+</html>

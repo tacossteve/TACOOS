@@ -1,0 +1,151 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    font-family:'Poppins',sans-serif;
+    background:#000;
+}
+
+body{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+#space{
+    position:fixed;
+    inset:0;
+    width:100%;
+    height:100%;
+    z-index:1;
+}
+
+#galaxy{
+    position:absolute;
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:5;
+}
+
+#blackHole{
+    position:relative;
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    background:#000;
+    box-shadow:
+    0 0 40px #5a2cff,
+    0 0 90px #7f5cff,
+    0 0 180px #3b82f6;
+    cursor:pointer;
+    animation:pulse 4s infinite ease-in-out;
+}
+
+.ring{
+    position:absolute;
+    top:50%;
+    left:50%;
+    width:320px;
+    height:90px;
+    border-radius:50%;
+    transform:translate(-50%,-50%) rotate(20deg);
+    border:8px solid rgba(255,180,60,.9);
+    box-shadow:
+    0 0 30px orange,
+    0 0 60px gold,
+    inset 0 0 20px #fff;
+    animation:spin 8s linear infinite;
+}
+
+.glow{
+    position:absolute;
+    inset:-60px;
+    border-radius:50%;
+    background:radial-gradient(circle,
+    rgba(120,90,255,.35),
+    rgba(255,0,180,.15),
+    transparent 70%);
+    animation:glow 6s infinite;
+}
+
+#letter{
+    position:fixed;
+    width:90%;
+    max-width:650px;
+    background:rgba(20,20,40,.95);
+    border:2px solid rgba(255,255,255,.2);
+    border-radius:20px;
+    padding:30px;
+    color:white;
+    text-align:center;
+    backdrop-filter:blur(20px);
+    box-shadow:
+    0 0 40px rgba(255,255,255,.2),
+    0 0 120px rgba(124,58,237,.6);
+    display:none;
+    z-index:20;
+}
+
+#letter h1{
+    margin-bottom:20px;
+    font-size:2rem;
+}
+
+#letter p{
+    line-height:1.8;
+    font-size:1.05rem;
+}
+
+#close{
+    margin-top:30px;
+    border:none;
+    padding:14px 30px;
+    border-radius:40px;
+    font-size:17px;
+    cursor:pointer;
+    color:white;
+    background:linear-gradient(90deg,#ff4da6,#7c3aed);
+    transition:.3s;
+}
+
+#close:hover{
+    transform:scale(1.08);
+}
+
+@keyframes spin{
+    from{
+        transform:translate(-50%,-50%) rotate(0deg);
+    }
+    to{
+        transform:translate(-50%,-50%) rotate(360deg);
+    }
+}
+
+@keyframes pulse{
+    0%,100%{
+        transform:scale(1);
+    }
+    50%{
+        transform:scale(1.08);
+    }
+}
+
+@keyframes glow{
+    0%,100%{
+        transform:scale(1);
+        opacity:.6;
+    }
+    50%{
+        transform:scale(1.25);
+        opacity:1;
+    }
+}
